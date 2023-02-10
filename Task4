@@ -1,0 +1,58 @@
+#Задача1.Даны два неупорядоченных набора целых чисел (может быть, с повторениями). Выдать без повторений в порядке возрастания все те числа, которые встречаются в обоих наборах.Пользователь вводит 2 числа. n - кол-во элементов первого множества. m - кол-во элементов второго множества. Затем пользователь вводит сами элементы множеств.
+
+int=int(input('Введите number: '))
+my_set = my_set
+for i in range(number):
+    int  =int(input('Введите n: '))
+    my_set.add(n)
+int  =int(input('Введите number1: '))
+my_set1 = my_set1
+for i in range(number1):
+    int  =int(input('Введите n1: '))
+    my_set1.add(n1)
+repeating_numbers = my_set.intersection(my_set1)
+print(repeating_numbers)
+#Задача 2. В фермерском хозяйстве в Карелии выращивают чернику. Она растет на круглой грядке, причем кусты высажены только по окружности. Таким образом, у каждого куста есть ровно два соседних. Всего на грядке растет N кустов. Эти кусты обладают разной урожайностью, поэтому ко времени сбора на них выросло различное число ягод – на i-ом кусте выросло ai ягод. В этом фермерском хозяйстве внедрена система автоматического сбора черники. Эта система состоит из управляющего модуля и нескольких обирающих модулей. Собирающий модуль за один заход, находясь непосредственно перед некоторым кустом, собирает ягоды с этого куста и с двух соседних с ним. Напишите программу для нахождения максимального числа ягод, которое может собрать за один заход собирающий модуль, находясь перед некоторым кустом заданной во входном файле грядки.
+
+n = int(input())
+a = list(map(int, input().split()))
+maxsum = 0
+for i in range(n):
+	cursum = sum(a[i:i+3])
+	if cursum > maxsum:
+		maxsum = cursum
+if a[0] + a[-1] + a[-2] > maxsum:
+	maxsum = a[0] + a[-1] + a[-2]
+if a[0] + a[1] + a[-1] > maxsum:
+	maxsum = a[0] + a[1] + a[-1]
+print(maxsum)
+
+
+#Второй вариант:
+
+import math
+def main():
+    input_file = open("input.txt", "r")
+    output_file = open("output.txt", "w")
+    line = input_file.readline().split()
+    n, m = int(line[0]), int(line[1])
+    a = set()
+    b = set()
+    arr = []
+    for i in range((10 ** 5) + 1):
+        arr.append(0)
+    line = input_file.readline().split()
+    for i in range(n):
+        a.add(int(line[i]))
+    line = input_file.readline().split()
+    for i in range(m):
+        b.add(int(line[i]))
+    for i in a:
+        arr[i] += 1
+    for i in b:
+        arr[i] += 1
+    mass = []
+    for i in range(len(arr)):
+        if arr[i] > 1:
+            mass.append(i)
+    print(mass)
